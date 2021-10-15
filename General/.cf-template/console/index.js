@@ -3,7 +3,7 @@ import chalk from 'chalk';
 import path from 'path';
 
 const REPLACE_KEY = '#username';
-const LOG_MSG_HEADER = 'Generated Console';
+const LOG_MSG_HEADER = 'Generate Console';
 
 const log = console.log;
 
@@ -57,20 +57,19 @@ const generate = async (outputPath, templatePath) => {
   Promise.resolve()
     .then(() => fs.promises.mkdir(outputPath))
     .then(() => Promise.all([
-      fs.promises.readFile(`${templatePath}/languages/dotnet.cs`),
+      fs.promises.readFile(`${templatePath}/languages/dotnet.csx`),
       fs.promises.readFile(`${templatePath}/languages/node.js`),
-
     ]))
     .then(([
-      styledContent,
-      componentContent,
+      csxContent,
+      jsContent,
     ]) => {
       return Promise.all([
-        fs.promises.writeFile(`${outputPath}/${username}.cs`, replaceContent(styledContent, REPLACE_KEY, username)),
-        fs.promises.writeFile(`${outputPath}/${username}.js`, replaceContent(componentContent, REPLACE_KEY, username)),
+        fs.promises.writeFile(`${outputPath}/${username}.csx`, replaceContent(csxContent, REPLACE_KEY, username)),
+        fs.promises.writeFile(`${outputPath}/${username}.js`, replaceContent(jsContent, REPLACE_KEY, username)),
       ]);
     })
-    .then(() => printSuccess(componentName, outputPath))
+    .then(() => printSuccess(username, outputPath))
     .catch((err) => printFail(err));
 }
 

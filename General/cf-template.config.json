@@ -1,5 +1,5 @@
 {
-  "baseDir": "./",
+  "baseDir": "./src",
   "default": "console",
   "templates": {
     "styled-component": {
