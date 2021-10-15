@@ -1,2 +1,2 @@
-# code-room-session-templates
+# LiveShare Code Sessions
 Templates for LiveShare Code Sessions
