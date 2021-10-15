@@ -1,0 +1,10 @@
+{
+  "baseDir": "./",
+  "default": "console",
+  "templates": {
+    "styled-component": {
+      "alias": "sc"
+    },
+    "console": {}
+  }
+}
